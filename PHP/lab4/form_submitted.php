@@ -104,7 +104,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
    
    
     
-		if(empty($_POST["email"]))
+		/*if(empty($_POST["email"]))
    {
 	  $hasError=true; 
 	  $err_email="*Enter email required";
@@ -113,7 +113,28 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
    {
 	 $email=$_POST["email"];  
    }
+   */
    
+   
+            if(empty($_POST["email"])){
+               $err_email="*Please enter email";
+            }
+
+            else{
+                $s=strpos($_POST["email"],"@");
+                if($s!=false){
+                    $t=strpos($_POST["email"],".", $s+1);
+                    if($t!=false){
+                        $email=$_POST["email"];
+                    }
+                    else{
+                        $err_email="*Invalid email";
+                    }
+                }
+                else{
+                    $err_email="*Invalid email";
+                }
+            }
     
    
 		if(empty($_POST["code"]))
