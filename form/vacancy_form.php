@@ -3,6 +3,8 @@ $vtitle="";
 $err_vtitle="";
 $vid="";
 $err_vid="";
+$vcontact="";
+$err_vcontact="";
  
 $hasError=false;
  
@@ -40,6 +42,15 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
    }
    
    
+		if(empty($_POST["vcontact"]))
+   {
+	  $hasError=true; 
+	  $err_vcontact="*contact required";
+   }
+   else
+   {
+	 $vcontact=$_POST["vcontact"];  
+   }
     
  
     
